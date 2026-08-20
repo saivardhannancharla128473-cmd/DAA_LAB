@@ -1,24 +1,13 @@
-import java.util.Scanner;
-
-class Factorial {
-
-    int fact(int n) {
-
-        if (n == 0 || n == 1)
-            return 1;
-
-        return n * fact(n - 1);
-    }
-
+import java.util.*;
+public class factorial {
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter number: ");
-        int n = sc.nextInt();
-
-        Factorial obj = new Factorial();
-
-        System.out.println("Factorial = " + obj.fact(n));
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = s.nextInt();
+        int fact = 1;
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+        System.out.println("Factorial of " + n + ": " + fact);
     }
 }
