@@ -7,7 +7,11 @@ public class coinChange {
         int[][] dp = new int[m + 1][N + 1];
 
         for (int i = 0; i <= m; i++) {
-            dp[i][0] = 1;
+            dp[i][0] = 0;
+        }
+
+        for (int j = 1; j <= N; j++) {
+            dp[0][j] = N + 1;
         }
 
         for (int i = 1; i <= m; i++) {
@@ -15,7 +19,8 @@ public class coinChange {
                 if (j < coins[i - 1]) {
                     dp[i][j] = dp[i - 1][j];
                 } else {
-                    dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]];
+                    dp[i][j] = Math.min(dp[i - 1][j],
+                            dp[i][j - coins[i - 1]] + 1);
                 }
             }
         }
@@ -40,7 +45,7 @@ public class coinChange {
             coins[i] = sc.nextInt();
         }
 
-        System.out.println("Number of ways = " + coinChange(N, coins));
+        System.out.println("Minimum number of coins = " + coinChange(N, coins));
 
         sc.close();
     }
